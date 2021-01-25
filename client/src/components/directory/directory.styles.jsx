@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const DirectoryMenuContainer = styled.div`
-  width: 100%;
+export const DirectoryMenuWrap = styled.div`
+  width: 50vw;
+  min-width:743px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

@@ -1,35 +1,45 @@
-import ShopActionTypes from './shop.types';
+import shopActionType from './shop.types'
 
-import {
-  firestore,
-  convertCollectionsSnapshotToMap
-} from '../../firebase/firebase.utils';
+import fetchingDataFromServer from '../../pages/shop/shopData.fetching.js';
+
+export const addElaboratedItem = (item) => ({
+	type: shopActionType.ADD_ELABORATED_ITEM,
+	payload: item
+})
+
+export const getElaboratedItem = () => ({
+	type: shopActionType.GET_ELABORATED_ITEM
+})
+
+export const removeElaboratedItem = () => ({
+	type: shopActionType.REMOVE_ELABORATED_ITEM
+})
 
 export const fetchCollectionsStart = () => ({
-  type: ShopActionTypes.FETCH_COLLECTIONS_START
-});
+	type: shopActionType.FETCH_COLLECTIONS_START,
+})
 
-export const fetchCollectionsSuccess = collectionsMap => ({
-  type: ShopActionTypes.FETCH_COLLECTIONS_SUCCESS,
-  payload: collectionsMap
-});
+export const fetchCollectionsSuccess = collectionMap => ({
+	type: shopActionType.FETCH_COLLECTIONS_SUCCESS,
+	payload: collectionMap
+})
 
 export const fetchCollectionsFailure = errorMessage => ({
-  type: ShopActionTypes.FETCH_COLLECTIONS_FAILURE,
-  payload: errorMessage
-});
+	type: shopActionType.FETCH_COLLECTIONS_FAILURE,
+	payload: errorMessage
+})
 
 export const fetchCollectionsStartAsync = () => {
-  return dispatch => {
-    const collectionRef = firestore.collection('collections');
-    dispatch(fetchCollectionsStart());
+	return dispatch => {
+		try {
+		dispatch(fetchCollectionsStart());
+		const collectionsMap = fetchingDataFromServer()
+		.then((data) => dispatch(fetchCollectionsSuccess(data))
+		);
+		} catch (error) {
+			dispatch(fetchCollectionsFailure(error.message));
+		} 
+			
+	}
+}
 
-    collectionRef
-      .get()
-      .then(snapshot => {
-        const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-        dispatch(fetchCollectionsSuccess(collectionsMap));
-      })
-      .catch(error => dispatch(fetchCollectionsFailure(error.message)));
-  };
-};

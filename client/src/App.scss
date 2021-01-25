@@ -1,0 +1,44 @@
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.ChatBotWrap {
+	width:100px;
+	height:60px;
+	background-color:white;
+	right:1%;
+	bottom:1%;
+	position:fixed;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	cursor:pointer;
+	border:1px solid #FDD225;
+	border-radius:25%;	
+	z-index: 2;
+	animation: fadeIn ease 0.2s;
+
+	&.FadeOut {
+		animation: fadeOut ease 0.2s;
+		display:none;
+	}
+}
+
+@keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@keyframes fadeOut {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}

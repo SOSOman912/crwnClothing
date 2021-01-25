@@ -1,29 +1,42 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ReactComponent as Logo  } from '../../assets/crown.svg';
 
 export const HeaderContainer = styled.div`
-  height: 70px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
-`;
+	background-color:white;
+    padding: 0px 80px;
+	  height: 100px;
+	  width: 100%;
+`
 
 export const LogoContainer = styled(Link)`
-  height: 100%;
-  width: 70px;
-  padding: 25px;
-`;
+    width:100%;
+    height:50%;
+`
+
+export const LinkContainer = styled.div`
+    display:flex;
+    align-items:center;   
+    background-color:#FED82E;
+`
+
 
 export const OptionsContainer = styled.div`
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-`;
+    width: 100%;
+    display: flex;
+    cursor:pointer;
+    justify-content:space-between;
+
+`
 
 export const OptionLink = styled(Link)`
-  padding: 10px 15px;
-  cursor: pointer;
-`;
+      cursor:pointer;
+      color:#422057;
+      padding:0px 20px;
+`
+
+export const LOGO = styled(Logo)`
+    text-align:center;
+    width:100%;
+    height:50%;
+`

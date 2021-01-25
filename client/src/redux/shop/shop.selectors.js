@@ -1,30 +1,38 @@
 import { createSelector } from 'reselect';
 
-const selectShop = state => state.shop;
+const selectshop = state => state.shop;
 
 export const selectCollections = createSelector(
-  [selectShop],
-  shop => shop.collections
-);
+	[selectshop],
+	shop => shop.collections
+	)
 
-export const selectCollectionsForPreview = createSelector(
-  [selectCollections],
-  collections =>
-    collections ? Object.keys(collections).map(key => collections[key]) : []
-);
+export const selectCollectionForPreview = createSelector(
+	[selectCollections],
+	collections => collections ? Object.keys(collections).map(key => collections[key]) : []
+	)
+ 
+export const selectDetailHidden = createSelector(
+	[selectshop],
+	shop => shop.hidden
+	)
 
-export const selectCollection = collectionUrlParam =>
-  createSelector(
-    [selectCollections],
-    collections => (collections ? collections[collectionUrlParam] : null)
-  );
+export const selectElaboratedItem = createSelector(
+	[selectshop],
+	shop => shop.ElaboratedItems
+	)
+
+export const selectCollection = collectionUrlParam => createSelector(
+	[selectCollections],
+	collections => collections ? collections[collectionUrlParam] : null
+	)
 
 export const selectIsCollectionFetching = createSelector(
-  [selectShop],
-  shop => shop.isFetching
-);
+	[selectshop],
+	shop => shop.isFetching
+	)
 
-export const selectIsCollectionsLoaded = createSelector(
-  [selectShop],
-  shop => !!shop.collections
-);
+export const selectIscollectionLoaded = createSelector(
+	[selectshop],
+	shop => !!shop.collections
+	)

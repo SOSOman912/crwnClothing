@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
-  const publishableKey = 'pk_test_b7a3hFL5nC3qlBCZ6bQACpez00gyMMP52H';
+  const publishableKey = 'pk_test_51I2etmDwDhx5BuMktM2pH5I8ZCPkUaFC4rf6VIY4tzZyQYG4dKP5PL8rVknjc9LOlEca5XAvYeNU2KDrvY6U4JgS00LV0Ktzj8';
 
   const onToken = token => {
     axios({
@@ -12,7 +12,7 @@ const StripeCheckoutButton = ({ price }) => {
       method: 'post',
       data: {
         amount: priceForStripe,
-        token: token
+        token
       }
     })
       .then(response => {
@@ -21,7 +21,9 @@ const StripeCheckoutButton = ({ price }) => {
       .catch(error => {
         console.log('Payment Error: ', error);
         alert(
-          'There was an issue with your payment! Please make sure you use the provided credit card.'
+          `There was an issue with your payment! Please make sure you use the provided credit card.
+           Reason: ${error.message}
+          `
         );
       });
   };
@@ -29,7 +31,7 @@ const StripeCheckoutButton = ({ price }) => {
   return (
     <StripeCheckout
       label='Pay Now'
-      name='CRWN Clothing Ltd.'
+      name='YOLO MALL'
       billingAddress
       shippingAddress
       image='https://svgshare.com/i/CUz.svg'

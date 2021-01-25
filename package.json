@@ -2,22 +2,27 @@
   "name": "crwn-clothing-server",
   "version": "1.0.0",
   "engines": {
-    "node": "10.15.3",
-    "npm": "6.4.1"
+    "node": "12.18.3",
+    "npm": "6.14.8"
   },
   "scripts": {
-    "client": "cd client && yarn start",
+    "client": "cd client && npm start",
     "server": "nodemon server.js",
     "build": "cd client && npm run build",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
+    "actions-on-google": "^2.13.0",
+    "compression": "1.7.4",
     "body-parser": "^1.18.3",
+    "dialogflow-fulfillment": "^0.6.1",
     "cors": "2.8.5",
+    "ngrok": "^3.4.0",
     "dotenv": "7.0.0",
     "express": "^4.16.4",
+    "pg": "^8.5.1",
     "stripe": "6.28.0"
   },
   "devDependencies": {

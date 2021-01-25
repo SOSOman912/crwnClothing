@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components'
 
-export const CheckoutItemContainer = styled.div`
+const SpanTag = css`
+  width: 23%;
+`
+
+export const CheckOutItem = styled.div`
   width: 100%;
   display: flex;
   min-height: 100px;
@@ -8,35 +12,41 @@ export const CheckoutItemContainer = styled.div`
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
-`;
+`
 
 export const ImageContainer = styled.div`
-  width: 23%;
-  padding-right: 15px;
+    width: 23%;
+    padding-right: 15px;
+`
 
-  img {
+export const Image = styled.img`
     width: 100%;
-    height: 100%;
-  }
-`;
+    height: 100%;	
+`
 
-export const TextContainer = styled.span`
-  width: 23%;
-`;
+export const Name = styled.span`
+	${SpanTag}
+`
 
-export const QuantityContainer = styled(TextContainer)`
-  display: flex;
+export const Quantity = styled.span`
+	${SpanTag}
 
-  span {
-    margin: 0 10px;
-  }
+	display:flex;
+`
 
-  div {
+export const Price = styled.span`
+	${SpanTag}
+`
+
+export const Arrow = styled.div`
+	cursor:pointer;
+`
+
+export const Value = styled.span`
+	margin:0 10px;
+`
+
+export const RemoveButton = styled.div`
+    padding-left: 12px;
     cursor: pointer;
-  }
-`;
-
-export const RemoveButtonContainer = styled.div`
-  padding-left: 12px;
-  cursor: pointer;
-`;
+`
