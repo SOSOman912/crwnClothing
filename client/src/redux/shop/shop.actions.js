@@ -16,7 +16,7 @@ export const removeElaboratedItem = () => ({
 })
 
 export const fetchCollectionsStart = () => ({
-	type: shopActionType.FETCH_COLLECTIONS_START,
+	type: shopActionType.FETCH_COLLECTIONS_START
 })
 
 export const fetchCollectionsSuccess = collectionMap => ({
@@ -39,7 +39,15 @@ export const fetchCollectionsStartAsync = () => {
 		} catch (error) {
 			dispatch(fetchCollectionsFailure(error.message));
 		} 
-			
 	}
 }
+
+export const changePosterToShow = (number) => ({
+	type:shopActionType.CHANGE_POSTER_TO_SHOW,
+	payload: number
+})
+
+export const togglecategoryhidden = () => ({
+	type:shopActionType.TOGGLE_CATEGORY_HIDDEN,
+})
 

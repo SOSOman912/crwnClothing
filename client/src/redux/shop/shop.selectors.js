@@ -36,3 +36,13 @@ export const selectIscollectionLoaded = createSelector(
 	[selectshop],
 	shop => !!shop.collections
 	)
+
+export const selectPosterToShow = createSelector(
+	[selectshop],
+	shop => shop.PosterToshow
+	)
+
+export const selectCategoryhidden = createSelector(
+	[selectshop],
+	shop => shop.Categoryhidden
+	)

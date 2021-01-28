@@ -7,16 +7,23 @@ import CartIcon from '../cart-icon/cart-icon.component'
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selector';
-import { LinkContainer, LOGO, LogoContainer,  HeaderContainer, OptionsContainer, OptionLink } from './header.styles.jsx'
+import { DROPDOWNICON, CategoryTitle, CategoryBox, LinkContainer, LOGO, LogoContainer,  HeaderContainer, OptionsContainer, OptionLink } from './header.styles.jsx'
+import { togglecategoryhidden } from '../../redux/shop/shop.actions';
+import CategoryDropDown  from '../category-dropdown/category-dropdown.component';
+import { selectCategoryhidden } from '../../redux/shop/shop.selectors';
 
-const Header = ({currentUser, hidden, shake}) => {
+const Header = ({currentUser, hidden, shake,togglecategoryhidden, categoryhidden}) => {
 	return(
 		<HeaderContainer >
 			<LogoContainer to="/">
 				<LOGO />
 			</LogoContainer>
-					<OptionsContainer >
-						<LinkContainer>
+					<OptionsContainer>
+						<LinkContainer>	
+							<CategoryBox onClick={() => togglecategoryhidden()}>
+								<CategoryTitle>Category</CategoryTitle>
+								<DROPDOWNICON /> 
+							</CategoryBox>
 							<OptionLink to='/shop'>
 								Shop
 							</OptionLink>
@@ -35,6 +42,10 @@ const Header = ({currentUser, hidden, shake}) => {
 					{
 					   hidden ? null :
 					<CartDropDown />
+					}
+					{
+					   categoryhidden ? null :
+					<CategoryDropDown/>
 					}	
 		</HeaderContainer>
 	);
@@ -42,7 +53,12 @@ const Header = ({currentUser, hidden, shake}) => {
 
 const mapStateToProps = createStructuredSelector({
 	currentUser : selectCurrentUser,
-	hidden: selectCartHidden
+	hidden: selectCartHidden,
+	categoryhidden: selectCategoryhidden
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+	togglecategoryhidden: () => dispatch(togglecategoryhidden())
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

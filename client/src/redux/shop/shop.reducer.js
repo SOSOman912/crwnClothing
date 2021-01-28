@@ -5,7 +5,9 @@ const INITIAL_STATE = {
 	isFetching: false,
 	errorMessage: undefined,
 	ElaboratedItems: '',
-	hidden: true
+	hidden: true,
+	PosterToshow: 1,
+	Categoryhidden: true
 }
 
 const shopReducer = ( state = INITIAL_STATE, action) => {
@@ -43,6 +45,16 @@ const shopReducer = ( state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				collections: action.payload
+			}
+		case shopActionType.CHANGE_POSTER_TO_SHOW:
+			return {
+				...state,
+				PosterToshow: action.payload
+			}
+		case shopActionType.TOGGLE_CATEGORY_HIDDEN:
+			return {
+				...state,
+				Categoryhidden: !state.Categoryhidden
 			}
 		default:
 			return state;
