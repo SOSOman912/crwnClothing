@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import './App.scss';
 import {ContentContainer} from './App.styles'
 import ChatBot from './components/chatBot/chatBot.components.jsx';
-import { selectCollections, selectDetailHidden} from './redux/shop/shop.selectors'
+import {selectDetailHidden} from './redux/shop/shop.selectors'
 import DetailViewer from './components/detail/detail.component'
 import Homepage from './pages/homepage/homepage.components';
 import ShopPage from './pages/shop/shop.component';
@@ -45,7 +45,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { DetailHidden, Collections} = this.props;
+    const { DetailHidden} = this.props;
     return (
           <ContentContainer>
                 { DetailHidden ? null :
@@ -53,8 +53,8 @@ class App extends React.Component {
                 }
                   <Header /> 
                   <Switch>
+                    <Route exact path='/shop' component={ShopPage} />
                     <Route exact path='/' component={Homepage} />
-                    <Route path='/shop' component={ShopPage} />
                     <Route exact path='/checkout' component={CheckoutPage} />
                     <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to ='/' />) : (<SignInAndSignUpPage />)} />
                   </Switch>  
@@ -67,7 +67,6 @@ class App extends React.Component {
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   DetailHidden:  selectDetailHidden,
-  Collections: selectCollections,
 })
 
 const mapDispatchToProps = dispatch => ({

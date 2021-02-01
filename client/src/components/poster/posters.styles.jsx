@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const PosterWrapper = styled.div`
-	width:1074px;
+	width:1525px;
 	height:700px;
 	position:relative;
 `

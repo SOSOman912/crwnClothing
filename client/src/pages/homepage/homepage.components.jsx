@@ -2,21 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { selectCollectionForPreview } from '../../redux/shop/shop.selectors.js';
 import { createStructuredSelector } from 'reselect';
+import CollectionsOverview from '../../components/collections-overview/collections-overview.components.jsx'
 
 import { HomePageContainer,
 		 FirstSection,
-		 PosterContainer,
-		 EmptyDiv
+		 PosterContainer
  							} from './homepage.styles';
 
 const Homepage = ({Collections}) => {
 	return(
 	<HomePageContainer>
 		<FirstSection>
-			 <EmptyDiv />
 			 <PosterContainer/>
 		</FirstSection>
-
+		<CollectionsOverview  />
 	</HomePageContainer>
 		)
 }

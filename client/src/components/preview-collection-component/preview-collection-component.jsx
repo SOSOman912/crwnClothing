@@ -10,7 +10,7 @@ const CollectionPreview = ({title, Items}) => (
 			<div>
 				<PreviewWrap >
 				{
-			 		Items.filter((item, idx) => idx < 5).map((item) => (
+			 		Items.filter((item, idx) => idx < 4).map((item) => (
 			 			<CollectionItem key={item.product_id} item = {item} />
 			 			))
 				}
@@ -18,6 +18,5 @@ const CollectionPreview = ({title, Items}) => (
 	 		</div>
 	</CollectionPreviewWrap>
 	)
-
 
 export default CollectionPreview;

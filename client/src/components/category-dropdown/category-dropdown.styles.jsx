@@ -40,8 +40,9 @@ export const Category = styled.div`
 	position:absolute;
 	left:20%;
 	width:476px;
-	height:100%;
+	height:60px;
 	background-color:white;
+    z-index:2;
 `
 
 export const ARROW = styled(Arrow)`

@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const CollectionPreviewWrap = styled.div`
   width:1525px;
-  margin:0 20%;
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
 `;
 
 export const TitleWrap = styled.h1`
+  text-align:center;
   font-size: 28px;
   margin-bottom: 25px;
   cursor: pointer;

@@ -1,28 +1,27 @@
 import React from 'react';
-import { Route } from  'react-router-dom';
 import { connect } from 'react-redux';
 
-import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container'
-import CategoryPageContainer  from '../category/category.container';
-
 import { fetchCollectionsStartAsync } from '../../redux/shop/shop.actions';
+import {Content,ShopPageContainer,FirstSection, SecondSection, FilteringArea} from './shop.styles.jsx';
+import CollectionFilterOverview from '../../components/Collections-Filter-Overview/Collections-Filter-Overview.component.jsx';
 
 
 class ShopPage extends React.Component 
 {	
-
-	componentDidMount() {
-		const { fetchCollectionsStartAsync } = this.props;
-		fetchCollectionsStartAsync();
-	}
-
 	render() {
-		const { match, } = this.props;
 	return(	
-		<div className='shop-page'>	
-			<Route exact path={`${match.path}`} component={CollectionsOverviewContainer}/>
-			<Route path={`${match.path}/:categoryId`} component={CategoryPageContainer} />
-		</div>
+		<ShopPageContainer>
+			<h1>Filtered By</h1>
+			<hr/>
+			<Content>
+				<FirstSection>
+					<FilteringArea/>
+				</FirstSection>
+				<SecondSection>
+					<CollectionFilterOverview/>
+				</SecondSection>	
+			</Content>
+		</ShopPageContainer>
 		);
 	}
 }

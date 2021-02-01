@@ -15,7 +15,6 @@ const CollectionsOverview = ({ collections }) => {
 		<CollectionPreview key={id} {...otherCollectionProps} />	
 		))
 		}
-
 	</CollectionOverviewWrap>
 	)
 }

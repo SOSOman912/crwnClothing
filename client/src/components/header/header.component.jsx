@@ -7,25 +7,20 @@ import CartIcon from '../cart-icon/cart-icon.component'
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selector';
-import { DROPDOWNICON, CategoryTitle, CategoryBox, LinkContainer, LOGO, LogoContainer,  HeaderContainer, OptionsContainer, OptionLink } from './header.styles.jsx'
+import { LinkContainer, LOGO, LogoContainer,  HeaderContainer, OptionsContainer, OptionLink } from './header.styles.jsx'
 import { togglecategoryhidden } from '../../redux/shop/shop.actions';
 import CategoryDropDown  from '../category-dropdown/category-dropdown.component';
 import { selectCategoryhidden } from '../../redux/shop/shop.selectors';
-
 const Header = ({currentUser, hidden, shake,togglecategoryhidden, categoryhidden}) => {
 	return(
 		<HeaderContainer >
-			<LogoContainer to="/">
-				<LOGO />
-			</LogoContainer>
+					<LogoContainer to='/'>
+						<LOGO/>
+					</LogoContainer>
 					<OptionsContainer>
 						<LinkContainer>	
-							<CategoryBox onClick={() => togglecategoryhidden()}>
-								<CategoryTitle>Category</CategoryTitle>
-								<DROPDOWNICON /> 
-							</CategoryBox>
 							<OptionLink to='/shop'>
-								Shop
+								Shop All
 							</OptionLink>
 							<OptionLink to='/shop'>
 								CONTACT
@@ -38,6 +33,7 @@ const Header = ({currentUser, hidden, shake,togglecategoryhidden, categoryhidden
 							}
 							</LinkContainer>
 						<CartIcon/>
+				
 					</OptionsContainer>
 					{
 					   hidden ? null :

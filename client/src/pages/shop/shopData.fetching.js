@@ -41,6 +41,8 @@ const fetchingDataFromServer = async() => {
 	}	
 	var result = await makeGetRequest();
 
+	console.log(result);
+
 	return result;
 }
 

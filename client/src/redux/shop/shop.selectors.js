@@ -11,6 +11,11 @@ export const selectCollectionForPreview = createSelector(
 	[selectCollections],
 	collections => collections ? Object.keys(collections).map(key => collections[key]) : []
 	)
+
+export const selectCollectionForFiltering = createSelector(
+	[selectCollections],
+	collections => collections ? Object.keys(collections).map(key => collections[key]).map(data => data.Items).reduce((a,e) => a.concat(e),[]) : []
+	)
  
 export const selectDetailHidden = createSelector(
 	[selectshop],
