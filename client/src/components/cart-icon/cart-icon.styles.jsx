@@ -10,6 +10,7 @@ export const CartIconWrap = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transform: translate(0,60%);
 `
 
 export const ShoppingIconWrap = styled(ShoppingIcon)`
@@ -20,6 +21,7 @@ export const ShoppingIconWrap = styled(ShoppingIcon)`
 
 export const ItemCount = styled.span`
 	position: absolute;
+    color:black;
     font-size: 10px;
     font-weight: bold;
     bottom: 12px;

@@ -1,7 +1,4 @@
 import React from 'react';
-// import { connect } from 'react-redux'
-// import { toggleChatBotHidden } from '../../redux/chatBot/chatbot.actions'
-// import { ContentContainer, ChatBotContainer, CloseButton, ContentWrappeer, ChatBotWrapper, InputWrapper, ResultWrapper,ResultTableRow, Result} from './chatBot.styles.jsx';
 
 class ChatBot extends React.Component {
 	componentDidMount() {
@@ -16,37 +13,10 @@ class ChatBot extends React.Component {
 	}
 
 	render(){
-	// const { toggleChatBotHidden  } = this.props;
 		return(
 		<div></div>
-		// <ChatBotWrapper>
-			// <ChatBotContainer>
-			// 	<CloseButton onClick={()=> toggleChatBotHidden()}>
-			// 		<p>x</p>
-			// 	</CloseButton>
-			// 	<ContentWrappeer>
-			// 		<ContentContainer>
-			// 		<ResultWrapper>
-			// 			<tbody>
-			// 				<ResultTableRow>
-			// 					<Result>
-
-			// 						<div>hello</div>
-			// 					</Result>
-		// 					</ResultTableRow>
-		// 				</tbody>
-		// 			</ResultWrapper>
-		// 		<InputWrapper /> 
-		// 		</ContentContainer>
-		// 	</ContentWrappeer>
-		// 	</ChatBotContainer>
-		// </ChatBotWrapper>
 		);
 	};
 };
-
-// const mapDispatchToProps = dispatch => ({
-// 	toggleChatBotHidden: () => dispatch(toggleChatBotHidden())
-// })
 
 export default ChatBot;

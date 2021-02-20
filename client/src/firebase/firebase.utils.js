@@ -1,6 +1,7 @@
-import firebase from 'firebase/app';
+ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import axios from 'axios';
 
 const config = 
 {
@@ -17,26 +18,48 @@ const config =
   export const createUserProfileDocument = async (userAuth, additionalData) => {
   		 if (!userAuth) return;
 
-  		 const userRef = firestore.doc(`users/${userAuth.uid}`);  
+        console.log(userAuth);
 
-  		 const snapShot = await userRef.get();
+        const { displayName, email, uid } = userAuth;
+        const createdAt = new Date();
 
-  		 if(!snapShot.exists) {
-  		 	const { displayName, email } = userAuth;
-  		 	const createdAt = new Date();
+        const existed = await CheckIfUserExist(uid);
 
-  		 	try {
-  		 		await userRef.set({
-  		 			displayName, email, createdAt,
-  		 			...additionalData
-  		 		})
-  		 	}catch (error ){
-  		 		console.log('error creating user', error.message);
-  		 	}
-  		 }
+        if (!existed.data[0].exists) {
+            try{
+            await createUserProfileInDatabase(userAuth,displayName);
+          } catch (err) {
+            console.log(err);
+          }
+        }
 
-  		 return userRef;
+  		 return userAuth;
   };
+
+  const CheckIfUserExist = (id) => {
+    return axios.get('/checkifexist' , {
+      params: {
+        user_id:id
+      }
+    })
+  }
+
+  export const createUserProfileInDatabase = async (userAuth, additionalData) => {
+    if (!userAuth) return;
+
+    axios({
+      url: '/userDocumentUpload',
+      method: 'post',
+      data: {
+        user_id: userAuth.uid,
+        username: additionalData,
+        email: userAuth.email,
+        created_on: new Date()
+      }
+    }).then(response => {
+      console.log(response);
+    })
+  }
 
   export const addCollectionAndDocument = async(collectionName, objects) => {
     const collectionRef = firestore.collection(collectionName);
@@ -50,23 +73,13 @@ const config =
           var DocRef = MencollectionRef.doc(object.womens[i].product_id);
           batch.set(DocRef, object.womens[i]);
       }
-
-      // for (var k = object.mens.length / 2 + 1; k < object.mens.length / 2 + object.mens.length / 4 ; k++){
-      //     var DocRef = MencollectionRef.doc(object.mens[k].product_id);
-      //     batch.set(DocRef, object.mens[k]);
-      // }
-      // for (var l = object.mens.length / 2 + object.mens.length / 4 + 1; l < object.mens.length  ; l++){
-      //     var DocRef = MencollectionRef.doc(object.mens[l].product_id);
-      //     batch.set(DocRef, object.mens[l]);
-      // }
     })
-
     return await batch.commit();
   } 
 
-
-
-
+  export const addItemToCartList = () => {
+    
+  }
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();

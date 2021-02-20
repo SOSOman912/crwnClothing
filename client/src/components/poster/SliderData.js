@@ -6,6 +6,6 @@ export const SliderData = [
 		image: 'hu.jpg'
 	},
 	{
-		image: 'hu2.jpg'
+		image: 'hu2.png'
 	}
 ]

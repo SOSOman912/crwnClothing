@@ -5,8 +5,7 @@ import { auth } from '../../firebase/firebase.utils';
 import { createStructuredSelector } from 'reselect';
 import CartIcon from '../cart-icon/cart-icon.component'
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
-import { selectCartHidden } from '../../redux/cart/cart.selectors';
-import { selectCurrentUser } from '../../redux/user/user.selector';
+import { selectCartHidden,selectCurrentUser } from '../../redux/cart/cart.selectors';
 import { LinkContainer, LOGO, LogoContainer,  HeaderContainer, OptionsContainer, OptionLink } from './header.styles.jsx'
 import { togglecategoryhidden } from '../../redux/shop/shop.actions';
 import CategoryDropDown  from '../category-dropdown/category-dropdown.component';

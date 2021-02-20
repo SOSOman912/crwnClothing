@@ -9,10 +9,10 @@ import { createStructuredSelector } from 'reselect'
 
 import { CartIconWrap, ShoppingIconWrap, ItemCount } from './cart-icon.styles.jsx';
 
-const CartIcon = ({ toggleCartHidden, itemCount }) => (
+const CartIcon = ({ toggleCartHidden,itemCount }) => (
 	<CartIconWrap >
 		<ShoppingIconWrap onClick={toggleCartHidden} />
-		<ItemCount >{itemCount}</ItemCount>
+		<ItemCount>{itemCount}</ItemCount>
 	</CartIconWrap>	
 ); 	 
 

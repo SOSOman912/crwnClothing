@@ -19,3 +19,8 @@ export const removeItem = item => ({
 	type: CartActionTypes.REMOVE_ITEM,
 	payload: item
 })
+
+export const setCurrentUser = user => ({
+	type: CartActionTypes.SET_CURRENT_USER,
+	payload: user
+});

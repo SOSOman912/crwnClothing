@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { ReactComponent as chatBotIcon } from './assets/chatbot.svg'
 import { ReactComponent as Arrow } from './assets/Antu_arrow-right.svg' 
+import ChatBot from './components/chatBot/chatBot.components.jsx';
 
 export const ContentContainer = styled.div`
 	width:100%;
@@ -12,6 +13,11 @@ export const ContentContainer = styled.div`
 export const ChatBotBtn = styled(chatBotIcon)`
 	width:60px;
 	height:60px;
+`
+
+export const ChatBotContainer = styled(ChatBot)`
+    width:100%;
+    height:100%;
 `
 
 

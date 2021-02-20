@@ -1,10 +1,10 @@
 import CartActionTypes from './cart.types';
-import { addItemToCart, removeItemFromCart } from './cart.utils';	
+import { addItemToCart, removeItemFromCart,clearItemFromCart,checkingCartList } from './cart.utils';	
 
 const INITIAL_STATE = {
 	hidden : true,	
-	cartItems : []
-
+	cartItems : [],
+	currentUser: null
 }
 
 const cartReducer = ( state = INITIAL_STATE, action) => {
@@ -17,19 +17,23 @@ const cartReducer = ( state = INITIAL_STATE, action) => {
 		case CartActionTypes.ADD_ITEM:
 			return{
 			...state, 
-			cartItems: addItemToCart(state.cartItems, action.payload),
+			cartItems: addItemToCart(state, action.payload),
 			};
 		case CartActionTypes.CLEAR_ITEM_FROM_CART:
 			return{
 			...state,
-			cartItems: state.cartItems.filter(cartItem => 
-				cartItem.product_id !== action.payload.product_id
-				)
+			cartItems: clearItemFromCart(state, action.payload)
 			}
 		case CartActionTypes.REMOVE_ITEM:
 			return{
 			...state,
-			cartItems: removeItemFromCart(state.cartItems,action.payload)
+			cartItems: removeItemFromCart(state,action.payload)
+			}
+		case CartActionTypes.SET_CURRENT_USER:
+			return {
+				...state,
+				currentUser: action.payload,
+				cartItems: checkingCartList(action.payload)
 			}
 		default: 
 			return state;
